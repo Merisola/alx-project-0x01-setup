@@ -2,7 +2,11 @@ import PostCard from "@/components/common/PostCard";
 import Header from "@/components/layout/Header";
 import { PostProps } from "@/interfaces";
 
-const Posts: React.FC<PostProps[]> = ({ posts }) => {
+interface PostsPageProps {
+  posts: PostProps[];
+}
+
+const Posts: React.FC<PostsPageProps> = ({ posts }) => {
   console.log(posts);
   return (
     <div className="flex flex-col h-screen">
@@ -14,14 +18,14 @@ const Posts: React.FC<PostProps[]> = ({ posts }) => {
             Add Post
           </button>
         </div>
-        <div className="grid grid-cols-3 gap-2 ">
-          {posts?.map(({ title, body, userId, id }: PostProps, key: number) => (
+        <div className="grid grid-cols-3 gap-2">
+          {posts?.map(({ title, body, userId, id }) => (
             <PostCard
               title={title}
               body={body}
               userId={userId}
               id={id}
-              key={key}
+              key={id}
             />
           ))}
         </div>
